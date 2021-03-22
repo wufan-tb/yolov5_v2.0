@@ -408,7 +408,7 @@ if __name__ == '__main__':
     parser.add_argument('--cfg', type=str, default='models/yolov5l.yaml', help='model.yaml path')
     parser.add_argument('--data', type=str, default='data/jiadaiwu.yaml', help='data.yaml path')
     parser.add_argument('--hyp', type=str, default='', help='hyp.yaml path (optional)')
-    parser.add_argument('--epochs', type=int, default=100)
+    parser.add_argument('--epochs', type=int, default=300)
     parser.add_argument('--batch-size', type=int, default=4, help="Total batch size for all gpus.")
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='train,test sizes')
     parser.add_argument('--rect', action='store_true', help='rectangular training')
@@ -434,7 +434,8 @@ if __name__ == '__main__':
         print(f'Resuming training from {last}')
     opt.weights = last if opt.resume and not opt.weights else opt.weights
     if opt.local_rank in [-1, 0]:
-        check_git_status()
+        pass
+        #check_git_status()
     opt.cfg = check_file(opt.cfg)  # check file
     opt.data = check_file(opt.data)  # check file
     if opt.hyp:  # update hyps
