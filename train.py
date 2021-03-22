@@ -406,10 +406,10 @@ def train(hyp, tb_writer, opt, device):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--cfg', type=str, default='models/yolov5l.yaml', help='model.yaml path')
-    parser.add_argument('--data', type=str, default='data/gongdi.yaml', help='data.yaml path')
+    parser.add_argument('--data', type=str, default='data/jiadaiwu.yaml', help='data.yaml path')
     parser.add_argument('--hyp', type=str, default='', help='hyp.yaml path (optional)')
-    parser.add_argument('--epochs', type=int, default=50)
-    parser.add_argument('--batch-size', type=int, default=16, help="Total batch size for all gpus.")
+    parser.add_argument('--epochs', type=int, default=100)
+    parser.add_argument('--batch-size', type=int, default=4, help="Total batch size for all gpus.")
     parser.add_argument('--img-size', nargs='+', type=int, default=[640, 640], help='train,test sizes')
     parser.add_argument('--rect', action='store_true', help='rectangular training')
     parser.add_argument('--resume', nargs='?', const='get_last', default=False,

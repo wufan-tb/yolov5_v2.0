@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
-import os,random,shutil
+import os,random,shutil,argparse
 import xml.etree.ElementTree as ET
 
+#参数修改
 #================================
-classes = ['watuji','person']
-dataset_path = '/data/gongdi'
-train_percent = 0.8
+parser = argparse.ArgumentParser()
+parser.add_argument('--classes', type=str, default='watuji,person',help="split by ,")
+parser.add_argument('--dataset', type=str, default='/data/gongdi', help='dataset path, contain jpgs and xmls')
+parser.add_argument('--split', type=float, default=0.8, help='split ratio')
+args = parser.parse_args()
 #================================
+classes = args.classes.split(',')
+dataset_path = args.dataset
+train_percent = args.split
+print(classes,dataset_path,train_percent)
 
 sets = ['train', 'val']
 xmlfilepath = os.path.join(dataset_path,'Annotations')
