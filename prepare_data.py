@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
-import os,random,shutil,argparse
+import os,random,shutil,argparse,yaml
 import xml.etree.ElementTree as ET
 
 #参数修改
 #================================
 parser = argparse.ArgumentParser()
-parser.add_argument('--classes', type=str, default='watuji,person',help="split by ,")
 parser.add_argument('--dataset', type=str, default='/data/gongdi', help='dataset path, contain jpgs and xmls')
+parser.add_argument('--data_yaml', type=str, default='data/gongdi.yaml',help="split by ,")
 parser.add_argument('--split', type=float, default=0.8, help='split ratio')
 args = parser.parse_args()
 #================================
-classes = args.classes.split(',')
+with open(args.data_yaml, encoding='utf-8') as file:
+    yaml = yaml.full_load(file)
+classes = yaml['names']
 dataset_path = args.dataset
 train_percent = args.split
 print(classes,dataset_path,train_percent)
